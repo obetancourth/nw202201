@@ -5,9 +5,10 @@ function analizarTexto($texto)
     $arrResult = array();
     $txtLimpio = str_replace([".",",",";","!","¡","?","¿"], "", $texto);
     $arrPalabras = explode(" ", $txtLimpio);
+    // [0:hola, 1:adios, 2:hola, 3:punto, 4:mucho, 5:comida, 6:taco]
 
     $arrFrecuencias = array();
-
+    // 
     foreach ($arrPalabras as $palabra) {
         if (isset($arrFrecuencias[$palabra])) {
             $arrFrecuencias[$palabra] ++;
@@ -15,7 +16,7 @@ function analizarTexto($texto)
             $arrFrecuencias[$palabra] = 1;
         }
     }
-
+    // [ adios: 1, punto: 1, hola : 2, mucho:1, comida: 1, taco:1 ]
     // sort rsort -- elimina las llaves
     // asort  arsort -- manteniene las llaves asociadas
     arsort($arrFrecuencias);
