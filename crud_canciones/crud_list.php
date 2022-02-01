@@ -1,7 +1,7 @@
 <?php
-    require_once 'lib/crud_controller.php';
+require_once 'lib/crud_controller.php';
 
-    $canciones = on_list_page_load();
+$canciones = on_list_page_load();
 
 ?>
 <!DOCTYPE html>
@@ -23,22 +23,25 @@
                     <th>Canción</th>
                     <th>Autor</th>
                     <th>Genero</th>
-                    <th>Nuevo</th>
+                    <th> <a href="crud_form.php?mode=INS">Nuevo</a></th>
                 </tr>
             </thead>
             <tbody>
                 <?php
-                    foreach($canciones as $cancion) {
+                foreach ($canciones as $cancion) {
                 ?>
-                <tr>
-                    <td><?php echo $cancion["id"]; ?></td>
-                    <td><?php echo $cancion["cancion"]; ?></td>
-                    <td><?php echo $cancion["autor"]; ?></td>
-                    <td><?php echo $cancion["genero"]; ?></td>
-                    <td>Editar Eliminar</td>
-                </tr>
+                    <tr>
+                        <td><?php echo $cancion["id"]; ?></td>
+                        <td><?php echo $cancion["cancion"]; ?></td>
+                        <td><?php echo $cancion["autor"]; ?></td>
+                        <td><?php echo $cancion["genero"]; ?></td>
+                        <td>
+                            <a href="crud_form.php?mode=UPD&id=<?php echo $cancion["id"]; ?>">Editar</a>
+                            <a href="crud_form.php?mode=DEL&id=<?php echo $cancion["id"]; ?>">Eliminar</a>
+                        </td>
+                    </tr>
                 <?php
-                    }
+                }
                 ?>
             </tbody>
         </table>
