@@ -1,9 +1,14 @@
 <?php
 
 require_once 'lib/crud_controller.php';
-
+$script = '';
 if (isset($_POST["btnConfirmar"])) {
     //trabajar con las acutalizaiones de datos
+    if (on_btn_click()) {
+        $script = "alert('Acción Realizada con Éxito!');window.location.assign('crud_list.php');";
+        echo '<script>' . $script . '</script>';
+        die();
+    }
 }
 
 $data = on_form_load();
@@ -20,10 +25,10 @@ $data = on_form_load();
 
 <body>
     <h1><?php echo $data["titulo"]; ?></h1>
-    <form action="crud_form.php" method="post">
-
+    <form action="crud_form.php?id=<?php echo $data["id"];?>&mode=<?php echo $data["mode"];?>" method="post">
         <label for="txtCodigo">Código</label>
         <input type="text" name="dmyCodigo" id="dmyCodigo" value="<?php echo $data["id"]; ?>" placeholder="Código" />
+        <input type="hidden" name="mode" value="<?php echo $data["mode"]; ?>" />
         <input type="hidden" name="txtCodigo" value="<?php echo $data["id"]; ?>" />
         <br />
         <label for="txtCancion">Canción</label>
