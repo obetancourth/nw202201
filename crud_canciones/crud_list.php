@@ -32,7 +32,7 @@ $canciones = on_list_page_load();
                 ?>
                     <tr>
                         <td><?php echo $cancion["id"]; ?></td>
-                        <td><?php echo $cancion["cancion"]; ?></td>
+                        <td><a href="crud_form.php?mode=DSP&id=<?php echo $cancion["id"]; ?>"><?php echo $cancion["cancion"]; ?></a></td>
                         <td><?php echo $cancion["autor"]; ?></td>
                         <td><?php echo $cancion["genero"]; ?></td>
                         <td>
